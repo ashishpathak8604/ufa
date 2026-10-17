@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 96" width="240" height="96" role="img" aria-label="Sponsor logo placeholder">
+  <rect x="4" y="4" width="232" height="88" rx="24" fill="#DCE5DA"/>
+  <rect x="14" y="14" width="212" height="68" rx="18" fill="none" stroke="#879B87" stroke-width="2" stroke-dasharray="6 7"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="3" fill="#33372F">PLACEHOLDER</text>
+  <text x="50%" y="68%" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#33372F">Sponsor logo placeholder</text>
+</svg>
