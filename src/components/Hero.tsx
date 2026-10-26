@@ -15,17 +15,17 @@ export function Hero() {
       aria-labelledby="hero-heading"
       className="relative isolate flex min-h-[92svh] w-full items-end overflow-hidden bg-olive sm:min-h-[94svh]"
     >
-      <Image
-        src={hero.image.src}
-        alt={hero.image.alt}
-        width={hero.image.width}
-        height={hero.image.height}
-        priority
-        fetchPriority="high"
-        sizes="100vw"
-        quality={80}
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
-      />
+     <Image
+  src={hero.image.src}
+  alt={hero.image.alt}
+  width={hero.image.width}
+  height={hero.image.height}
+  priority
+  fetchPriority="high"
+  sizes="100vw"
+  quality={80}
+  className="hero-image-zoom absolute inset-0 -z-10 h-full w-full object-cover object-center"
+/>
 
       {/* Localised contrast gradient — text area only, never a full overlay. */}
       <div
