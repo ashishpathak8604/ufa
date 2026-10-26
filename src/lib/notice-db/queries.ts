@@ -1,0 +1,5 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
+import { isNoticeRow, type NoticeRow } from "./mappers";
+const COLUMNS = "id,title,description,category,published_at,file_path,file_name,created_at";
+export async function fetchNoticeRows(client: SupabaseClient, limit?: number): Promise<NoticeRow[]> { let query = client.from("notices").select(COLUMNS).order("published_at", { ascending:false }).order("created_at", { ascending:false }); if (typeof limit === "number") query = query.limit(limit); const { data, error } = await query; if (error) { console.error("[notices] query failed", { code:error.code }); throw new Error("Notice query failed."); } return (Array.isArray(data) ? data : []).filter(isNoticeRow); }
+export async function fetchNoticeRowById(client: SupabaseClient, id: string): Promise<NoticeRow | null> { const {data,error}=await client.from("notices").select(COLUMNS).eq("id",id).maybeSingle(); if (error) { console.error("[notices] query failed", { code:error.code }); throw new Error("Notice query failed."); } return isNoticeRow(data) ? data : null; }

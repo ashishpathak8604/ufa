@@ -1,4 +1,9 @@
 import type { HeroAnnouncement } from "@/types/hero-announcement";
+import { hasSupabaseEnv } from "@/lib/supabase/env";
+import { createSupabasePublicClient } from "@/lib/supabase/public";
+import { HERO_ANNOUNCEMENT_LIMIT } from "@/lib/notice-db/constants";
+import { rowToHeroAnnouncement } from "@/lib/notice-db/mappers";
+import { fetchNoticeRows } from "@/lib/notice-db/queries";
 
 /**
  * Data-access seam for the Hero Announcement Board (independent of
@@ -71,17 +76,16 @@ export const emptySource: HeroAnnouncementSource = {
  * Jagdeep: replace this function body with a real database query and return
  * HeroAnnouncement records. Keep the return type Promise<HeroAnnouncement[]>.
  */
-export function createDatabaseSource(): HeroAnnouncementSource {
-  return emptySource;
+export function createDatabaseSource(): HeroAnnouncementSource { return { name: "supabase", async getHeroAnnouncements() { return (await fetchNoticeRows(createSupabasePublicClient(), HERO_ANNOUNCEMENT_LIMIT)).map(rowToHeroAnnouncement); } }; }
+
+function pickDefaultSource(): HeroAnnouncementSource {
+  if (hasSupabaseEnv()) return createDatabaseSource();
+  if (process.env.NODE_ENV === "production") return { name: "misconfigured", async getHeroAnnouncements() { console.error("[notices] SUPABASE_URL / SUPABASE_ANON_KEY are not set"); throw new Error("Supabase is not configured."); } };
+  return staticSampleSource;
 }
 
-const defaultSource: HeroAnnouncementSource =
-  process.env.NODE_ENV === "production"
-    ? createDatabaseSource()
-    : staticSampleSource;
-
 export async function getHeroAnnouncements(
-  source: HeroAnnouncementSource = defaultSource,
+  source: HeroAnnouncementSource = pickDefaultSource(),
 ): Promise<HeroAnnouncement[]> {
   try {
     const announcements = await source.getHeroAnnouncements();

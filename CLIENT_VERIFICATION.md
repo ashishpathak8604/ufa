@@ -44,7 +44,7 @@ For each slide (`src/content/site.ts#gallerySlides`, 4 items):
 - [ ] **"Sample data" notice** — acceptable to keep in development; may be removed/replaced in production copy.
 
 **Official Notices (integration seam for Jagdeep)**
-- [ ] **Contract review** — confirm `src/types/notice.ts` fields with Jagdeep (finalise `Notice` shape). Landing page accepts props only; real data arrives via `lib/notices.ts` seam (`getNotices()`).
+- [x] **Contract review** — implemented: `Notice.fileName` added; `url` carries the resolved PDF link; real data arrives via the `lib/notices.ts` database source.
 - [ ] **Notice links** — PDFs or internal links must be https (dev allows http). Use `lib/safe-url.ts` for all hrefs.
 - [ ] **"View all circulars" link** — destination placeholder (`#notices`) — confirm final route.
 - [ ] **Sample data** — `lib/notices.ts` returns clearly flagged `isSample: true` in development; production returns empty via seam. Jagdeep replaces implementation.
@@ -115,13 +115,14 @@ For each card (`src/content/site.ts#development.cards`, 3 items):
 
 ## 15) Integration contract (Jagdeep)
 
-- [ ] **Notice type agreement** — `src/types/notice.ts` (`Notice`, `NoticeCategory`) — finalise fields (ids, dates, URLs, description). 
-- [ ] **Seam implementation** — Jagdeep replaces `lib/notices.ts#createDatabaseSource()` to return real `Notice[]`. Landing page never does DB/auth/upload work.
+- [x] **Notice type agreement** — implemented: `Notice.fileName` added and `url` carries the resolved PDF link.
+- [x] **Seam implementation** — implemented: `lib/notices.ts#createDatabaseSource()` returns real database `Notice[]` records. Landing page never does DB/auth/upload work.
 - [ ] **Props-only components** — `NoticeBoard` and `AnnouncementStrip` accept props only; no data fetching in them.
 - [ ] **Safe URLs** — all externally supplied hrefs go through `safeUrl()`; links open with `rel="noopener noreferrer"` when external.
 - [ ] **States** — loading/empty/error states for notices are implemented; confirm UX expectations.
 - [ ] **Environment** — `.env.example` lists placeholders; real keys are Jagdeep’s responsibility (never put secrets in `NEXT_PUBLIC_*`).
 - [ ] **Backend security boundary** — frontend checks are never a substitute for backend authorisation (stated in handover).
+- [ ] Confirm notice category list and 4 MB PDF-only policy with the client.
 
 ## Verification status
 

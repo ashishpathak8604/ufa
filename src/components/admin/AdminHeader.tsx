@@ -1,0 +1,3 @@
+import Link from "next/link";
+import { logoutAction } from "@/app/admin/actions";
+export function AdminHeader({email}:{email:string|null}) { return <header className="mb-8 flex flex-wrap items-center justify-between gap-4"><div><p className="eyebrow">Uttarakhand Football Association</p><h1 className="font-display text-4xl uppercase text-olive">Notice administration</h1><p className="max-w-xs truncate break-all text-sm text-muted-strong">{email}</p></div><div className="flex items-center gap-4"><Link href="/" className="text-sm font-semibold text-gold-strong hover:underline">View website</Link><form action={logoutAction}><button className="min-h-11 rounded-full border border-olive/20 px-4 text-sm font-semibold text-olive">Sign out</button></form></div></header>; }

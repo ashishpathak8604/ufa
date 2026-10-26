@@ -3,7 +3,6 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { journey, journeyEntries } from "@/content/site";
-import { SectionHeading } from "./SectionHeading";
 import { PlaceholderBadge } from "./PlaceholderBadge";
 
 /**

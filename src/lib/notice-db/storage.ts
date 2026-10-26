@@ -1,0 +1,7 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
+import { getSupabaseEnv } from "@/lib/supabase/env";
+import { NOTICE_BUCKET, PDF_MIME } from "./constants";
+export function publicFileUrl(filePath: string): string { const { url } = getSupabaseEnv(); return `${url.replace(/\/+$/, "")}/storage/v1/object/public/${NOTICE_BUCKET}/${filePath.split("/").map(encodeURIComponent).join("/")}`; }
+export type StorageFailure = { kind: "duplicate" | "failed"; message: string };
+export async function uploadNoticePdf(supabase: SupabaseClient, filePath: string, file: File): Promise<{ ok: true } | { ok: false; failure: StorageFailure }> { const { error } = await supabase.storage.from(NOTICE_BUCKET).upload(filePath, new Uint8Array(await file.arrayBuffer()), { contentType: PDF_MIME, cacheControl: "3600", upsert: false }); if (!error) return { ok: true }; const duplicate = error.statusCode === "409" || /already exists|duplicate/i.test(error.message); console.error("[notices] upload failed", { code: error.statusCode }); return { ok: false, failure: { kind: duplicate ? "duplicate" : "failed", message: "Upload failed." } }; }
+export async function removeNoticePdf(supabase: SupabaseClient, filePath: string): Promise<boolean> { const { error } = await supabase.storage.from(NOTICE_BUCKET).remove([filePath]); if (!error) return true; console.error("[notices] file cleanup failed", { filePath }); return false; }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
@@ -18,9 +19,9 @@ export default function TermsPage() {
         The content on this site is provided for general information. Unverified items are clearly
         marked in development and are awaiting client confirmation.
       </p>
-      <a href="/" className="mt-6 inline-flex text-sm font-semibold text-gold-strong hover:underline">
+      <Link href="/" className="mt-6 inline-flex text-sm font-semibold text-gold-strong hover:underline">
         Return to home
-      </a>
+      </Link>
     </main>
   );
 }
