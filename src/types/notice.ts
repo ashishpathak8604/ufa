@@ -19,6 +19,8 @@ export interface Notice {
   description?: string;
   /** Link to the notice page or PDF. Validated with lib/safe-url.ts. */
   url?: string;
+  /** Original/display name of the attachment, e.g. "Referee-circular.pdf". */
+  fileName?: string;
   /** true only for mock/sample data — never true for real records. */
   isSample?: boolean;
   /** optional pinned flag for important notices */

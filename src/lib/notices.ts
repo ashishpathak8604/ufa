@@ -1,18 +1,17 @@
 import type { Notice } from "@/types/notice";
+import { hasSupabaseEnv } from "@/lib/supabase/env";
+import { createSupabasePublicClient } from "@/lib/supabase/public";
+import { PUBLIC_NOTICE_LIMIT } from "@/lib/notice-db/constants";
+import { rowToNotice } from "@/lib/notice-db/mappers";
+import { fetchNoticeRows } from "@/lib/notice-db/queries";
 
 /**
  * Data-access seam for public notices.
  *
  * OWNER: Jagdeep (backend).
  *
- * The landing page only ever calls `getNotices()` from a React Server
- * Component and passes the result down as props. To wire real data, replace
- * the body of `createDatabaseSource()` (and the default export below) with a
- * Supabase query. Nothing else in the frontend needs to change.
- *
- * Behaviour today:
- *  - production  -> returns [] so the UI shows the honest empty state
- *  - development -> returns clearly flagged sample data (isSample: true)
+ * The landing page receives database-backed notices when Supabase is
+ * configured. Development without credentials retains clearly flagged samples.
  *
  * The `NoticeSource` interface exists so a remote source, a cache, or a
  * static file can be swapped in without touching components.
@@ -71,17 +70,16 @@ export const emptySource: NoticeSource = {
  * Jagdeep: replace this function body with a Supabase (or other) query and
  * return real Notice records. Keep the return type `Promise<Notice[]>`.
  */
-export function createDatabaseSource(): NoticeSource {
-  return emptySource;
+export function createDatabaseSource(): NoticeSource { return { name: "supabase", async getNotices() { return (await fetchNoticeRows(createSupabasePublicClient(), PUBLIC_NOTICE_LIMIT)).map(rowToNotice); } }; }
+
+function pickDefaultSource(): NoticeSource {
+  if (hasSupabaseEnv()) return createDatabaseSource();
+  if (process.env.NODE_ENV === "production") return { name: "misconfigured", async getNotices() { console.error("[notices] SUPABASE_URL / SUPABASE_ANON_KEY are not set"); throw new Error("Supabase is not configured."); } };
+  return staticSampleSource;
 }
 
-const defaultSource: NoticeSource =
-  process.env.NODE_ENV === "production"
-    ? createDatabaseSource()
-    : staticSampleSource;
-
 export async function getNotices(
-  source: NoticeSource = defaultSource,
+  source: NoticeSource = pickDefaultSource(),
 ): Promise<Notice[]> {
   try {
     const notices = await source.getNotices();

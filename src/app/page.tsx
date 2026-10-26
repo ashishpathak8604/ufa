@@ -13,6 +13,9 @@ import { Affiliations } from "@/components/Affiliations";
 import { Footer } from "@/components/Footer";
 import { getHeroAnnouncements } from "@/lib/hero-announcements";
 
+// Safety net; publish/delete also call revalidatePath.
+export const revalidate = 300;
+
 const loadHeroAnnouncements = cache(() => getHeroAnnouncements());
 
 export default async function HomePage() {
