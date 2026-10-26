@@ -22,7 +22,7 @@ This document explains what belongs in `public/assets/`, naming conventions, rec
 - **WebP**: primary for all raster photographs (smaller, modern browser support). `next.config.ts` also allows AVIF.
 - **SVG**: for logos, marks, and simple graphics. Always provide transparency.
 - **File size targets**: hero under ~300KB; other photographs under ~150KB; SVGs tiny.
-- **Descriptive filenames**: e.g. `hero/uttarakhand-football-hero.webp`, `victories/championship-celebration-01.webp`, `leadership/leader-01-portrait.webp`. Avoid internal codes that aren’t meaningful.
+- **Descriptive filenames**: e.g. `hero/uttrakhand-football-hero.webp`, `victories/championship-celebration-01.webp`, `leadership/leader-01-portrait.webp`. Avoid internal codes that aren’t meaningful.
 
 ## Using the supplied placeholder set
 
@@ -53,14 +53,14 @@ Two supported workflows:
 ## Mapping to components
 
 The paths are centralised in `src/content/site.ts`. Key mappings:
-- **Hero**: `hero.uttarakhand-football-hero.webp` → Hero component
+- **Hero**: `hero/uttrakhand-football-hero.webp` → Hero component
 - **Gallery (Our proudest moments)**: `victories/*.webp` → Gallery component
 - **Our Journey (timeline)**: `history/association-milestone-*.webp` → Journey component
 - **Leadership**: `leadership/leader-*-portrait.webp` and `*-thumb.webp` → Leadership component
 - **Development**: `development/grassroots-football.webp`, `women-participation.webp`, `coach-referee-development.webp` → Development component
 - **Membership**: `gallery/membership-pathway.webp` → Membership component
 - **Affiliations/partners**: `affiliations/*.svg` → Affiliations component
-- **Branding**: `branding/ufa-logo.svg`, `branding/ufa-mark.svg` → Navbar/Footer/metadata
+- **Branding**: `branding/ufa-logo.png`, `branding/ufa-og-image.jpg` → Navbar/Footer/metadata
 
 If you rename a file, update the corresponding entry in `src/content/site.ts`. Do **not** hardcode paths inside components.
 

@@ -221,7 +221,7 @@ export function Gallery() {
           id="achievements-title"
           eyebrow="Honours and milestones"
           title="Our proudest moments"
-          lede="Every victory tells a story of teamwork, determination, and pride in representing Uttarakhand."
+          lede="Every victory tells a story of teamwork, determination, and pride in representing Uttrakhand."
         />
 
         <div className="flex items-center gap-3">

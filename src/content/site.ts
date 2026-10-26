@@ -11,15 +11,36 @@ export type Verifiable = {
 };
 
 export const site = {
-  name: "Uttarakhand Football Association",
+  name: "Uttrakhand Football Association",
   shortName: "UFA",
-  tagline: "State football association for Uttarakhand",
+  tagline: "State football association for Uttrakhand",
   description:
-    "The public information site of the Uttarakhand Football Association — our achievements, our journey, match information, official notices, and how to be part of football in the state.",
-  url: "", // set NEXT_PUBLIC_SITE_URL at deploy time; no claim is made here
+    "The public information site of the Uttrakhand Football Association — our achievements, our journey, match information, official notices, and how to be part of football in the state.",
+  seo: {
+    title: "Uttrakhand Football Association (UFA) | Football in Uttrakhand",
+    description:
+      "Uttrakhand Football Association (UFA) — football news, fixtures, results, official notices, membership, and development across Uttrakhand.",
+    keywords: [
+      "Uttrakhand Football Association",
+      "UFA",
+      "Uttrakhand football",
+      "football in Uttrakhand",
+      "state football association",
+      "football fixtures Uttrakhand",
+      "football results Uttrakhand",
+      "football notices Uttrakhand",
+      "football membership Uttrakhand",
+    ],
+    ogImage: {
+      src: "/assets/branding/ufa-og-image.jpg",
+      width: 1200,
+      height: 630,
+      alt: "Uttrakhand Football Association — football in Uttrakhand",
+    },
+  },
   logo: {
     src: "/assets/branding/ufa-logo.png",
-    alt: "Uttarakhand Football Association logo placeholder",
+    alt: "Uttrakhand Football Association logo",
     verified: false,
   },
 } as const;
@@ -43,23 +64,23 @@ export const navItems: NavItem[] = [
 export const JOIN_UFA_URL = "#membership";
 
 export const hero = {
-  eyebrow: "Uttarakhand Football Association",
+  eyebrow: "Uttrakhand Football Association",
   headlineLines: ["One state.", "One passion.", "One game."],
   goldLineIndex: 2,
-  body: "Celebrating our victories, honouring our journey, and shaping the next generation of football in Uttarakhand.",
+  body: "Celebrating our victories, honouring our journey, and shaping the next generation of football in Uttrakhand.",
   primaryCta: { label: "Explore Our Legacy", href: "#achievements" },
   secondaryCta: { label: "Become a Member", href: "#membership" },
   image: {
-    src: "/assets/hero/uttarakhand-football-hero.png",
-    alt: "Football match in progress at a stadium in Uttarakhand, players contesting the ball under floodlights",
-    width: 2400,
-    height: 1350,
+    src: "/assets/hero/uttrakhand-football-hero.webp",
+    alt: "Football match in progress at a stadium in Uttrakhand, players contesting the ball under floodlights",
+    width: 1672,
+    height: 941,
     verified: false,
   },
 } as const;
 
 export const ribbon = {
-  text: "UTTARAKHAND FOOTBALL ASSOCIATION · AFFILIATED WITH AIFF (ALL INDIA FOOTBALL FEDERATION) · AIFF IS THE FIFA MEMBER ASSOCIATION FOR INDIA (FÉDÉRATION INTERNATIONALE DE FOOTBALL ASSOCIATION)",
+  text: "UTTRAKHAND FOOTBALL ASSOCIATION · AFFILIATED WITH AIFF (ALL INDIA FOOTBALL FEDERATION) · AIFF IS THE FIFA MEMBER ASSOCIATION FOR INDIA (FÉDÉRATION INTERNATIONALE DE FOOTBALL ASSOCIATION)",
   /** Relationship: UFA → AIFF → FIFA. Do not claim UFA is directly affiliated with FIFA. */
   verified: false,
 } as const;
@@ -68,7 +89,7 @@ export const achievements = {
   id: "achievements",
   eyebrow: "Honours and milestones",
   title: "Our proudest moments",
-  lede: "Every victory tells a story of teamwork, determination, and pride in representing Uttarakhand.",
+  lede: "Every victory tells a story of teamwork, determination, and pride in representing Uttrakhand.",
 } as const;
 
 export type GallerySlide = {
@@ -90,10 +111,10 @@ export const gallerySlides: GallerySlide[] = [
     description:
       "A squad that stayed organised for ninety minutes and beyond, closing out a tournament with the sort of defending and discipline that coaching staffs work all season to build.",
     image: {
-      src: "/assets/victories/championship-celebration-01.jpeg",
+      src: "/assets/victories/championship-celebration-01.webp",
       alt: "Players celebrating with a trophy after a tournament final",
-      width: 1600,
-      height: 1200,
+      width: 1280,
+      height: 706,
     },
     verified: false,
   },
@@ -105,10 +126,10 @@ export const gallerySlides: GallerySlide[] = [
     description:
       "A campaign built on consistency through the group stage and a knockout run that gave younger players meaningful minutes against established sides.",
     image: {
-      src: "/assets/victories/championship-celebration-02.jpg",
+      src: "/assets/victories/championship-celebration-02.webp",
       alt: "Team lined up with medals on the pitch after a final",
       width: 1600,
-      height: 1200,
+      height: 1067,
     },
     verified: false,
   },
@@ -118,12 +139,12 @@ export const gallerySlides: GallerySlide[] = [
     year: "Year to be confirmed",
     title: "Squad honour — to be confirmed",
     description:
-      "A group photograph from a state campaign, recording the players, support staff, and officials who represented Uttarakhand together.",
+      "A group photograph from a state campaign, recording the players, support staff, and officials who represented Uttrakhand together.",
     image: {
-      src: "/assets/victories/championship-celebration-03.jpg",
+      src: "/assets/victories/championship-celebration-03.webp",
       alt: "Full team and support staff posing for a squad photograph on the pitch",
       width: 1600,
-      height: 1200,
+      height: 1067,
     },
     verified: false,
   },
@@ -135,10 +156,10 @@ export const gallerySlides: GallerySlide[] = [
     description:
       "Friends, families, and club volunteers who travel to follow the team — the reason match days feel like community events rather than fixtures.",
     image: {
-      src: "/assets/victories/championship-celebration-04.jpg",
+      src: "/assets/victories/championship-celebration-04.webp",
       alt: "Supporters with a banner cheering from the sidelines of a football ground",
       width: 1600,
-      height: 1200,
+      height: 1067,
     },
     verified: false,
   },
@@ -271,7 +292,7 @@ export const leadership = {
   id: "leadership",
   eyebrow: "Leadership",
   title: "The people behind the passion.",
-  lede: "Leadership, vision, and a shared commitment to the future of Uttarakhand football.",
+  lede: "Leadership, vision, and a shared commitment to the future of Uttrakhand football.",
   quoteLabel: "A word from our leadership",
 } as const;
 
@@ -426,7 +447,7 @@ export const journeyEntries: JourneyEntry[] = [
       "A placeholder for where the association stands today: competitions, membership, and the work still ahead.",
     image: {
       src: "/assets/history/association-milestone-01.jpg",
-      alt: "Current state football activity at a Uttarakhand ground — image to be supplied",
+      alt: "Current state football activity at a Uttrakhand ground — image to be supplied",
       width: 1200,
       height: 900,
     },
@@ -480,7 +501,7 @@ export const development = {
   id: "development",
   eyebrow: "Development",
   title: "More than ninety minutes.",
-  lede: "Building character, creating opportunities, and developing the next generation of football in Uttarakhand.",
+  lede: "Building character, creating opportunities, and developing the next generation of football in Uttrakhand.",
   cards: [
     {
       id: "grassroots",
@@ -563,7 +584,7 @@ export const affiliations = {
 export const footer = {
   id: "contact",
   intro:
-    "The Uttarakhand Football Association brings together clubs, districts, players, coaches, and officials across the state. This site carries our public information: achievements, fixtures, notices, and pathways into the game.",
+    "The Uttrakhand Football Association brings together clubs, districts, players, coaches, and officials across the state. This site carries our public information: achievements, fixtures, notices, and pathways into the game.",
   quickLinks: navItems,
  officeBearers: [
   {
@@ -576,7 +597,7 @@ export const footer = {
 contact: [
   {
     label: "Address",
-    value: "Near KVM School, Heera Nagar, Haldwani, Uttarakhand – 263139",
+    value: "Near KVM School, Heera Nagar, Haldwani, Uttrakhand – 263139",
     verified: true,
   },
   {

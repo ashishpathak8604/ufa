@@ -28,7 +28,7 @@ const PALETTE = {
 /** @type {Array<{ path: string, w: number, h: number, label: string, scene: string }>} */
 const RASTER = [
   {
-    path: "hero/uttarakhand-football-hero.webp",
+    path: "hero/uttrakhand-football-hero.webp",
     w: 2400,
     h: 1350,
     label: "Placeholder · replace with client photo",
@@ -54,13 +54,13 @@ const RASTER = [
   { path: "development/women-participation.webp", w: 1200, h: 900, label: "Placeholder · replace with client photo", scene: "Women's football participation" },
   { path: "development/coach-referee-development.webp", w: 1200, h: 900, label: "Placeholder · replace with client photo", scene: "Coach and referee education" },
   { path: "gallery/membership-pathway.webp", w: 1200, h: 900, label: "Placeholder · replace with client photo", scene: "Membership — player registration" },
-  { path: "placeholders/og-cover.webp", w: 1200, h: 630, label: "Placeholder · Uttarakhand Football Association", scene: "Social share card" },
+  { path: "placeholders/og-cover.webp", w: 1200, h: 630, label: "Placeholder · Uttrakhand Football Association", scene: "Social share card" },
   { path: "placeholders/portrait-placeholder.webp", w: 1200, h: 1500, label: "Portrait placeholder", scene: "Generic portrait" },
 ];
 
 /** SVG files written verbatim (logos and marks keep transparency). */
 const VECTOR = [
-  { path: "branding/ufa-logo.svg", svg: logoSvg("UFA", "Uttarakhand Football Association") },
+  { path: "branding/ufa-logo.svg", svg: logoSvg("UFA", "Uttrakhand Football Association") },
   { path: "branding/ufa-mark.svg", svg: logoSvg("UFA", "") },
   { path: "affiliations/aiff-affiliation-placeholder.svg", svg: markSvg("AIFF affiliation mark placeholder") },
   { path: "affiliations/sponsor-placeholder.svg", svg: markSvg("Sponsor logo placeholder") },

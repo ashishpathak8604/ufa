@@ -22,7 +22,7 @@ Use a current Node LTS release and npm. Run `npm install`, copy `.env.example` t
 3. Run `supabase/migrations/0001_notices.sql` in SQL Editor.
 4. Add the authorised administrator in Authentication, auto-confirming it.
 5. Add that user: `insert into public.admins (user_id) select id from auth.users where email = '<admin email>';`.
-6. Set `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_SITE_URL` locally and in both Vercel Production and Preview; redeploy after updating them.
+6. Set `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and (when using a custom domain) `NEXT_PUBLIC_SITE_URL` locally and in both Vercel Production and Preview; redeploy after updating them. On Vercel the production URL is used automatically when `NEXT_PUBLIC_SITE_URL` is unset. Optionally set `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION`.
 
 Architecture: public page → `lib/notices.ts` → `lib/notice-db` → Supabase. Admin → proxy + `requireAdmin` → server actions → Supabase RLS. RLS and storage policies are the security boundary. No service-role key is used; server checks use `getUser()`.
 

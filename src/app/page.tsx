@@ -11,6 +11,7 @@ import { Membership } from "@/components/Membership";
 import { Development } from "@/components/Development";
 // import { Affiliations } from "@/components/Affiliations";
 import { Footer } from "@/components/Footer";
+import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { getHeroAnnouncements } from "@/lib/hero-announcements";
 
 // Safety net; publish/delete also call revalidatePath.
@@ -22,19 +23,22 @@ export default async function HomePage() {
   const heroAnnouncements = await loadHeroAnnouncements();
 
   return (
-    <main id="main-content" className="flex flex-col">
+    <>
       <Navbar />
-      <Hero />
-      <AffiliationRibbon />
-      <HeroAnnouncementBoard announcements={heroAnnouncements} />
-      <Gallery />
-      <MatchCentre />
-      <Leadership />
-      <Journey />
-      <Membership />
-      <Development />
-      {/* <Affiliations /> */}
+      <main id="main-content" className="flex flex-col">
+        <OrganizationJsonLd />
+        <Hero />
+        <AffiliationRibbon />
+        <HeroAnnouncementBoard announcements={heroAnnouncements} />
+        <Gallery />
+        <MatchCentre />
+        <Leadership />
+        <Journey />
+        <Membership />
+        <Development />
+        {/* <Affiliations /> */}
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

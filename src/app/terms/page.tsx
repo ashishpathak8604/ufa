@@ -3,6 +3,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
+  description: "Terms of use for the Uttrakhand Football Association website.",
+  alternates: { canonical: "/terms" },
+  robots: { index: false, follow: true },
 };
 
 export default function TermsPage() {
@@ -12,7 +15,7 @@ export default function TermsPage() {
         Terms of Use
       </h1>
       <p className="text-sm leading-relaxed text-muted-strong">
-        This is a placeholder terms of use page for the Uttarakhand Football Association public
+        This is a placeholder terms of use page for the Uttrakhand Football Association public
         landing site. Replace with the association’s approved terms before publication.
       </p>
       <p className="text-sm leading-relaxed text-muted-strong">
