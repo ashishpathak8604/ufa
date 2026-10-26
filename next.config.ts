@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
+  experimental: { serverActions: { bodySizeLimit: "5mb" } },
   images: {
     formats: ["image/avif", "image/webp"],
   },
