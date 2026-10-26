@@ -90,7 +90,7 @@ export const gallerySlides: GallerySlide[] = [
     description:
       "A squad that stayed organised for ninety minutes and beyond, closing out a tournament with the sort of defending and discipline that coaching staffs work all season to build.",
     image: {
-      src: "/assets/victories/championship-celebration-01.webp",
+      src: "/assets/victories/championship-celebration-01.jpeg",
       alt: "Players celebrating with a trophy after a tournament final",
       width: 1600,
       height: 1200,
@@ -105,7 +105,7 @@ export const gallerySlides: GallerySlide[] = [
     description:
       "A campaign built on consistency through the group stage and a knockout run that gave younger players meaningful minutes against established sides.",
     image: {
-      src: "/assets/victories/championship-celebration-02.webp",
+      src: "/assets/victories/championship-celebration-02.jpg",
       alt: "Team lined up with medals on the pitch after a final",
       width: 1600,
       height: 1200,
@@ -120,7 +120,7 @@ export const gallerySlides: GallerySlide[] = [
     description:
       "A group photograph from a state campaign, recording the players, support staff, and officials who represented Uttarakhand together.",
     image: {
-      src: "/assets/victories/championship-celebration-03.webp",
+      src: "/assets/victories/championship-celebration-03.jpg",
       alt: "Full team and support staff posing for a squad photograph on the pitch",
       width: 1600,
       height: 1200,
@@ -135,7 +135,7 @@ export const gallerySlides: GallerySlide[] = [
     description:
       "Friends, families, and club volunteers who travel to follow the team — the reason match days feel like community events rather than fixtures.",
     image: {
-      src: "/assets/victories/championship-celebration-04.webp",
+      src: "/assets/victories/championship-celebration-04.jpg",
       alt: "Supporters with a banner cheering from the sidelines of a football ground",
       width: 1600,
       height: 1200,
@@ -292,7 +292,7 @@ export const leaders: Leader[] = [
     designation: "Designation to be confirmed",
     quote: "Quotation to be confirmed with the association.",
     image: {
-      src: "/assets/leadership/leader-01-portrait.webp",
+      src: "/assets/leadership/leader-01-portrait.jpeg",
       alt: "Portrait of an association office bearer — official photograph to be supplied",
       width: 1200,
       height: 1500,
@@ -311,7 +311,7 @@ export const leaders: Leader[] = [
     designation: "Designation to be confirmed",
     quote: "Quotation to be confirmed with the association.",
     image: {
-      src: "/assets/leadership/leader-02-portrait.webp",
+      src: "/assets/leadership/leader-01-portrait.jpeg",
       alt: "Portrait of an association office bearer — official photograph to be supplied",
       width: 1200,
       height: 1500,
@@ -330,7 +330,7 @@ export const leaders: Leader[] = [
     designation: "Designation to be confirmed",
     quote: "Quotation to be confirmed with the association.",
     image: {
-      src: "/assets/leadership/leader-03-portrait.webp",
+      src: "/assets/leadership/leader-01-portrait.jpeg",
       alt: "Portrait of an association office bearer — official photograph to be supplied",
       width: 1200,
       height: 1500,
@@ -369,7 +369,7 @@ export const journeyEntries: JourneyEntry[] = [
     description:
       "How the association was established and what the early organising effort looked like. This entry is a placeholder until the client confirms the date and the record.",
     image: {
-      src: "/assets/history/association-milestone-01.webp",
+      src: "/assets/history/association-milestone-01.jpg",
       alt: "Archive photograph from the early years of the association — image to be supplied",
       width: 1200,
       height: 900,
@@ -383,7 +383,7 @@ export const journeyEntries: JourneyEntry[] = [
     description:
       "The period in which district-level participation was organised. Milestone wording, order, and dates await client confirmation.",
     image: {
-      src: "/assets/history/association-milestone-02.webp",
+      src: "/assets/history/association-milestone-01.jpg",
       alt: "District football gathering photographed at a local ground — image to be supplied",
       width: 1200,
       height: 900,
@@ -397,7 +397,7 @@ export const journeyEntries: JourneyEntry[] = [
     description:
       "A placeholder for a season or competition that marked a step forward in regular state-level football.",
     image: {
-      src: "/assets/history/association-milestone-03.webp",
+      src: "/assets/history/association-milestone-01.jpg",
       alt: "State-level football match from a past season — image to be supplied",
       width: 1200,
       height: 900,
@@ -411,7 +411,7 @@ export const journeyEntries: JourneyEntry[] = [
     description:
       "A placeholder for coaching, refereeing, or youth work that changed how the game is run across the state.",
     image: {
-      src: "/assets/history/association-milestone-04.webp",
+      src: "/assets/history/association-milestone-01.jpg",
       alt: "Coaching session with young players — image to be supplied",
       width: 1200,
       height: 900,
@@ -425,7 +425,7 @@ export const journeyEntries: JourneyEntry[] = [
     description:
       "A placeholder for where the association stands today: competitions, membership, and the work still ahead.",
     image: {
-      src: "/assets/history/association-milestone-05.webp",
+      src: "/assets/history/association-milestone-01.jpg",
       alt: "Current state football activity at a Uttarakhand ground — image to be supplied",
       width: 1200,
       height: 900,
@@ -442,7 +442,7 @@ export const membership = {
   applyLabel: "Apply for membership",
   applyUrl: "#contact",
   image: {
-    src: "/assets/gallery/membership-pathway.webp",
+    src: "/assets/gallery/membership-pathway.jpeg",
     alt: "A young player completing registration paperwork at a club office",
     width: 1200,
     height: 900,
@@ -488,7 +488,7 @@ export const development = {
       description:
         "Regular playing opportunities for children and teenagers, so the first experience of football is fun, safe, and repeatable.",
       image: {
-        src: "/assets/development/grassroots-football.webp",
+        src: "/assets/development/grassroots-football.jpeg",
         alt: "Children playing football at a grassroots training session",
         width: 1200,
         height: 900,
@@ -501,7 +501,7 @@ export const development = {
       description:
         "Supporting girls and women to play, compete, and stay in the game through accessible competition and coaching.",
       image: {
-        src: "/assets/development/women-participation.webp",
+        src: "/assets/development/women-participation.jpeg",
         alt: "Women's football team during a training drill on a grass pitch",
         width: 1200,
         height: 900,
@@ -514,7 +514,7 @@ export const development = {
       description:
         "Education for the people who make matches happen — coaches who teach the game and referees who manage it fairly.",
       image: {
-        src: "/assets/development/coach-referee-development.webp",
+        src: "/assets/development/coach-referee-development.jpeg",
         alt: "Coach leading a training session while a referee observes",
         width: 1200,
         height: 900,
@@ -565,16 +565,31 @@ export const footer = {
   intro:
     "The Uttarakhand Football Association brings together clubs, districts, players, coaches, and officials across the state. This site carries our public information: achievements, fixtures, notices, and pathways into the game.",
   quickLinks: navItems,
-  officeBearers: [
-    { role: "President", name: "Name to be confirmed", verified: false },
-    { role: "Secretary", name: "Name to be confirmed", verified: false },
-    { role: "Treasurer", name: "Name to be confirmed", verified: false },
-  ],
-  contact: [
-    { label: "Address", value: "Address to be confirmed", verified: false },
-    { label: "Phone", value: "Phone number to be confirmed", verified: false },
-    { label: "Email", value: "Email address to be confirmed", verified: false },
-  ],
+ officeBearers: [
+  {
+    role: "Hon. Secretary",
+    name: "Mr Akhtar Ali",
+    verified: true,
+  },
+],
+
+contact: [
+  {
+    label: "Address",
+    value: "Near KVM School, Heera Nagar, Haldwani, Uttarakhand – 263139",
+    verified: true,
+  },
+  {
+    label: "Phone",
+    value: "+91 94120 87643",
+    verified: true,
+  },
+  {
+    label: "Email",
+    value: "usfahld@gmail.com",
+    verified: true,
+  },
+],
   socials: [
     { id: "x", label: "X (formerly Twitter)", url: "https://example.com/ufa", verified: false },
     { id: "facebook", label: "Facebook", url: "https://example.com/ufa", verified: false },

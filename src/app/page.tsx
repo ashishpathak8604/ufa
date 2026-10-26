@@ -9,7 +9,7 @@ import { Leadership } from "@/components/Leadership";
 import { Journey } from "@/components/Journey";
 import { Membership } from "@/components/Membership";
 import { Development } from "@/components/Development";
-import { Affiliations } from "@/components/Affiliations";
+// import { Affiliations } from "@/components/Affiliations";
 import { Footer } from "@/components/Footer";
 import { getHeroAnnouncements } from "@/lib/hero-announcements";
 
@@ -30,7 +30,7 @@ export default async function HomePage() {
       <Journey />
       <Membership />
       <Development />
-      <Affiliations />
+      {/* <Affiliations /> */}
       <Footer />
     </main>
   );
