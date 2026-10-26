@@ -42,8 +42,6 @@ export function MatchTabs() {
     }
   };
 
-  const list = matches[activeTab];
-
   return (
     <div className="card p-5 sm:p-7">
       <div className="flex flex-wrap items-center justify-between gap-3">

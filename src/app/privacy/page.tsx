@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -17,9 +18,9 @@ export default function PrivacyPage() {
       <p className="text-sm leading-relaxed text-muted-strong">
         No personal data is collected or processed by this application.
       </p>
-      <a href="/" className="mt-6 inline-flex text-sm font-semibold text-gold-strong hover:underline">
+      <Link href="/" className="mt-6 inline-flex text-sm font-semibold text-gold-strong hover:underline">
         Return to home
-      </a>
+      </Link>
     </main>
   );
 }
