@@ -18,7 +18,7 @@ returns boolean language sql stable security definer set search_path = '' as $$
   select exists (select 1 from public.admins a where a.user_id = (select auth.uid()));
 $$;
 revoke all on function public.is_admin() from public;
-grant execute on function public.is_admin() to anon, authenticated;
+grant execute on function public.is_admin() to authenticated;
 
 create table if not exists public.notices (
   id uuid primary key default gen_random_uuid(),
@@ -32,6 +32,7 @@ create table if not exists public.notices (
   created_by uuid references auth.users (id) on delete set null default auth.uid()
 );
 create index if not exists notices_published_idx on public.notices (published_at desc, created_at desc);
+create index if not exists notices_created_by_idx on public.notices (created_by);
 alter table public.notices enable row level security;
 drop policy if exists "notices_public_read" on public.notices;
 create policy "notices_public_read" on public.notices for select to anon, authenticated using (true);

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { externalLinkProps, safeUrl } from "@/lib/safe-url";
 import { footer, site } from "@/content/site";
 
@@ -129,13 +130,19 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-warmwhite/10 pt-6 text-sm text-warmwhite/60">
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-warmwhite/10 pt-6 text-sm text-warmwhite/60">
           <p>
             © {year} Uttarakhand Football Association. All rights reserved.{" "}
             <span className="inline-block">
               This is a development build awaiting client-supplied copy and photographs.
             </span>
           </p>
+          {/* <Link
+            href={footer.admin.href}
+            className="ml-auto inline-flex min-h-11 items-center font-semibold text-warmwhite/70 transition-colors hover:text-warmwhite"
+          >
+            {footer.admin.label}
+          </Link> */}
         </div>
       </div>
     </footer>

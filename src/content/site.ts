@@ -585,4 +585,5 @@ export const footer = {
     { label: "Privacy", href: "/privacy" },
     { label: "Terms", href: "/terms" },
   ],
+  admin: { label: "Admin sign in", href: "/admin/login" },
 } as const;
