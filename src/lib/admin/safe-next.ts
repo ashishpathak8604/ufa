@@ -1,0 +1,1 @@
+export function safeAdminNext(raw: unknown): string { return typeof raw === "string" && /^\/admin(?:\/[A-Za-z0-9_-]+)*\/?$/.test(raw) && !raw.includes("//") && !raw.includes("..") && !raw.includes("\\") ? raw : "/admin"; }

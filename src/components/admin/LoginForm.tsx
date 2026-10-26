@@ -1,0 +1,6 @@
+"use client";
+import { useActionState } from "react";
+import { loginAction } from "@/app/admin/actions";
+import { initialFormState } from "@/lib/admin/form-state";
+import { SubmitButton } from "./SubmitButton";
+export function LoginForm({next}:{next:string}) { const [state,action]=useActionState(loginAction,initialFormState); return <form action={action} className="mt-6 space-y-5"><input type="hidden" name="next" value={next}/><div><label htmlFor="email" className="mb-1 block text-sm font-semibold text-olive">Email</label><input id="email" name="email" type="email" autoComplete="username" required inputMode="email" className="min-h-11 w-full rounded-xl border border-olive/20 bg-ivory px-4 text-base text-olive"/></div><div><label htmlFor="password" className="mb-1 block text-sm font-semibold text-olive">Password</label><input id="password" name="password" type="password" autoComplete="current-password" required className="min-h-11 w-full rounded-xl border border-olive/20 bg-ivory px-4 text-base text-olive"/></div><div aria-live="polite">{state.message&&<p role="alert" className="text-sm text-olive">{state.message}</p>}</div><SubmitButton label="Sign in" pendingLabel="Signing in…"/></form>; }
