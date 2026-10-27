@@ -1,6 +1,6 @@
 # UFA website
 
-The Uttarakhand Football Association website includes a protected notice-publishing dashboard. It uses Next.js 16, React 19, TypeScript, Tailwind CSS, and Supabase (Auth, Postgres, and Storage).
+The Uttrakhand Football Association website includes a protected notice-publishing dashboard. It uses Next.js 16, React 19, TypeScript, Tailwind CSS, and Supabase (Auth, Postgres, and Storage).
 
 ## Local setup
 
@@ -23,6 +23,14 @@ Use a current Node LTS release and npm. Run `npm install`, copy `.env.example` t
 4. Add the authorised administrator in Authentication, auto-confirming it.
 5. Add that user: `insert into public.admins (user_id) select id from auth.users where email = '<admin email>';`.
 6. Set `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and (when using a custom domain) `NEXT_PUBLIC_SITE_URL` locally and in both Vercel Production and Preview; redeploy after updating them. On Vercel the production URL is used automatically when `NEXT_PUBLIC_SITE_URL` is unset. Optionally set `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION`.
+
+## Supabase keep-alive
+
+Supabase Free projects pause after roughly seven days without database activity. `GET /api/keep-alive` is public, performs a lightweight `notices` read, and returns `{ "ok": true, "latencyMs": ... }`.
+
+`.github/workflows/supabase-keep-alive.yml` calls `https://ukfootball.vercel.app/api/keep-alive` every 20 minutes and can also be run manually from the Actions tab. No secret or repository variable is required. Deploy the site before enabling the workflow so the route exists in production.
+
+Vercel Hobby cannot schedule a 20-minute cron (daily only); on Pro you can use a `vercel.json` cron with `*/20 * * * *` instead of the GitHub workflow. Because the endpoint is public, anyone who discovers it can trigger a single read; keep the response lightweight and add a secret or WAF rule if abuse becomes a concern.
 
 Architecture: public page → `lib/notices.ts` → `lib/notice-db` → Supabase. Admin → proxy + `requireAdmin` → server actions → Supabase RLS. RLS and storage policies are the security boundary. No service-role key is used; server checks use `getUser()`.
 
