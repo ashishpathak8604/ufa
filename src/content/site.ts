@@ -11,18 +11,18 @@ export type Verifiable = {
 };
 
 export const site = {
-  name: "Uttrakhand Football Association",
+  name: "Uttrakhand State Football Association",
   shortName: "USFA",
   tagline: "State football association for Uttrakhand",
   description:
-    "The public information site of the Uttrakhand Football Association — our achievements, our journey, match information, official notices, and how to be part of football in the state.",
+    "The public information site of the Uttrakhand State Football Association — our achievements, our journey, match information, official notices, and how to be part of football in the state.",
   seo: {
-    title: "Uttrakhand Football Association (UFA) | Football in Uttrakhand",
+    title: "Uttrakhand State Football Association (USFA) | Football in Uttrakhand",
     description:
-      "Uttrakhand Football Association (UFA) — football news, fixtures, results, official notices, membership, and development across Uttrakhand.",
+      "Uttrakhand State Football Association (USFA) — football news, fixtures, results, official notices, membership, and development across Uttrakhand.",
     keywords: [
-      "Uttrakhand Football Association",
-      "UFA",
+      "Uttrakhand State Football Association",
+      "USFA",
       "Uttrakhand football",
       "football in Uttrakhand",
       "state football association",
@@ -64,7 +64,7 @@ export const navItems: NavItem[] = [
 export const JOIN_UFA_URL = "#membership";
 
 export const hero = {
-  eyebrow: "Uttrakhand Football Association",
+  eyebrow: "Uttrakhand State Football Association",
   headlineLines: ["One state.", "One passion.", "One game."],
   goldLineIndex: 2,
   body: "Celebrating our victories, honouring our journey, and shaping the next generation of football in Uttrakhand.",
@@ -80,7 +80,7 @@ export const hero = {
 } as const;
 
 export const ribbon = {
-  text: "UTTRAKHAND FOOTBALL ASSOCIATION · AFFILIATED WITH AIFF (ALL INDIA FOOTBALL FEDERATION) · AIFF IS THE FIFA MEMBER ASSOCIATION FOR INDIA (FÉDÉRATION INTERNATIONALE DE FOOTBALL ASSOCIATION)",
+  text: "UTTRAKHAND STATE FOOTBALL ASSOCIATION · AFFILIATED WITH AIFF (ALL INDIA FOOTBALL FEDERATION) · AIFF IS THE FIFA MEMBER ASSOCIATION FOR INDIA (FÉDÉRATION INTERNATIONALE DE FOOTBALL ASSOCIATION)",
   /** Relationship: UFA → AIFF → FIFA. Do not claim UFA is directly affiliated with FIFA. */
   verified: false,
 } as const;
