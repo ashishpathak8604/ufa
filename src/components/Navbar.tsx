@@ -101,7 +101,7 @@ export function Navbar() {
               href={JOIN_UFA_URL}
               className="btn btn-primary hidden min-h-11 px-5 py-2.5 text-sm sm:inline-flex"
             >
-              Join UFA
+              Join USFA
             </a>
 
             <button
