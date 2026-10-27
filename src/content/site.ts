@@ -12,7 +12,7 @@ export type Verifiable = {
 
 export const site = {
   name: "Uttrakhand Football Association",
-  shortName: "UFA",
+  shortName: "USFA",
   tagline: "State football association for Uttrakhand",
   description:
     "The public information site of the Uttrakhand Football Association — our achievements, our journey, match information, official notices, and how to be part of football in the state.",
