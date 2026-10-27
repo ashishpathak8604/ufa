@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { externalLinkProps, safeUrl } from "@/lib/safe-url";
 import { footer, site } from "@/content/site";
 import {
@@ -9,12 +8,37 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 
+const socialIcons = {
+  x: FaXTwitter,
+  facebook: FaFacebookF,
+  instagram: FaInstagram,
+  youtube: FaYoutube,
+} as const;
+
 /**
  * Footer (section 5L). Premium dark (#33372F). Copyright line uses the current
  * year computed at build. All contact/socials use safeUrl.
  */
 export function Footer() {
   const year = new Date().getFullYear().toString();
+  const socials = footer.socials.flatMap((item) => {
+    const href = safeUrl(item.url);
+    if (!href) return [];
+
+    try {
+      const hostname = new URL(href).hostname;
+      if (hostname === "example.com" || hostname.endsWith(".example.com")) {
+        return [];
+      }
+    } catch {
+      return [];
+    }
+
+    const Icon = socialIcons[item.id as keyof typeof socialIcons];
+    if (!Icon) return [];
+
+    return [{ ...item, href, Icon }];
+  });
 
   return (
     <footer id="contact" className="bg-olive text-warmwhite">
@@ -26,7 +50,7 @@ export function Footer() {
                 src={site.logo.src}
                 alt=""
                 width={72}
-                height={36}
+                height={70}
                 className="h-8 w-auto opacity-90"
                 loading="lazy"
               />
@@ -126,40 +150,29 @@ export function Footer() {
   })}
 </ul>
 
-           <h2 className="mt-6 font-display text-sm font-semibold uppercase tracking-[0.16em] text-warmwhite">
-  Follow Us
-</h2>
+            {socials.length > 0 && (
+              <>
+                <h2 className="mt-6 font-display text-sm font-semibold uppercase tracking-[0.16em] text-warmwhite">
+                  Follow Us
+                </h2>
 
-<ul className="mt-3 flex flex-wrap gap-3">
-  {footer.socials.map((item) => {
-    const href = safeUrl(item.url);
-    if (!href) return null;
-
-    const icons = {
-      x: FaXTwitter,
-      facebook: FaFacebookF,
-      instagram: FaInstagram,
-      youtube: FaYoutube,
-    };
-
-    const Icon = icons[item.id as keyof typeof icons];
-    if (!Icon) return null;
-
-    return (
-      <li key={item.id}>
-        <a
-          href={href}
-          {...(href.startsWith("http") ? externalLinkProps : {})}
-          aria-label={item.label}
-          title={item.label}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-warmwhite/20 text-warmwhite/80 transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:bg-gold hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-        >
-          <Icon size={19} aria-hidden="true" />
-        </a>
-      </li>
-    );
-  })}
-</ul>
+                <ul className="mt-3 flex flex-wrap gap-3">
+                  {socials.map(({ id, label, href, Icon }) => (
+                    <li key={id}>
+                      <a
+                        href={href}
+                        {...(href.startsWith("http") ? externalLinkProps : {})}
+                        aria-label={label}
+                        title={label}
+                        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-warmwhite/20 text-warmwhite/80 transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:bg-gold hover:text-olive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                      >
+                        <Icon size={19} aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
 
             <h2 className="mt-6 font-display text-sm font-semibold uppercase tracking-[0.16em] text-warmwhite">
               Policies
@@ -181,7 +194,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-warmwhite/10 pt-6 text-sm text-warmwhite/60">
           <p>
-            © {year} Uttarakhand Football Association. All rights reserved.{" "}
+            © {year} Uttrakhand Football Association. All rights reserved.{" "}
             
           </p>
           {/* <Link

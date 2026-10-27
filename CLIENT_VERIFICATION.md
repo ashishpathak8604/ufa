@@ -1,22 +1,22 @@
 # CLIENT VERIFICATION CHECKLIST
 
-This document lists every unverified fact, image, and policy placeholder that must be replaced or confirmed by the Uttarakhand Football Association before going live. Development builds show small "Placeholder"/"Needs verification"/"Sample data" markers for these items; production builds suppress markers but the content remains unverified.
+This document lists every unverified fact, image, and policy placeholder that must be replaced or confirmed by the Uttrakhand Football Association before going live. Development builds show small "Placeholder"/"Needs verification"/"Sample data" markers for these items; production builds suppress markers but the content remains unverified.
 
-Each line must be checked off by the client. Where possible, replace via `src/content/site.ts` (copy) and `public/assets/` (photographs).
+Each line must be checked off by the client. Where possible, replace copy via `src/content/site.ts` and photographs via `assets-source/` (then run the optimiser).
 
 ## 1) Brand identity
 
-- [ ] **Logo / wordmark** — `src/content/site.ts#site.logo` (`/assets/branding/ufa-logo.svg`) — replace with the official UFA logo (SVG with transparency). Confirm correct alt text.
+- [ ] **Logo / wordmark** — `src/content/site.ts#site.logo` (`/assets/branding/ufa-logo.png`) — replace with the official UFA logo. Confirm correct alt text.
 - [ ] **Favicon** — `src/app/icon.svg` — replace with the official mark if preferred. Current is a development placeholder.
 
 ## 2) Site-wide metadata
 
-- [ ] **Site URL** — set `NEXT_PUBLIC_SITE_URL` in deployment (e.g. `https://ufa.example.org`). Do **not** commit this value. It affects Open Graph, Twitter, and `sitemap.ts`/`robots.ts` base URLs.
-- [ ] **Open Graph/Twitter image** — `public/assets/placeholders/og-cover.webp` — replace with an appropriate 1200×630 image.
+- [ ] **Site URL** — set `NEXT_PUBLIC_SITE_URL` only when using a custom domain (e.g. `https://ufa.example.org`). On Vercel the production URL is detected automatically. Do **not** commit a localhost value. It affects Open Graph, Twitter, and `sitemap.ts`/`robots.ts` base URLs.
+- [ ] **Open Graph/Twitter image** — `public/assets/branding/ufa-og-image.jpg` — replace with an appropriate 1200×630 image.
 
 ## 3) Hero (section 5B)
 
-- [ ] **Hero image** — `src/content/site.ts#hero.image` — confirm the photograph and alt text (`"Football match in progress..."`). Replace file at `public/assets/hero/uttarakhand-football-hero.webp` (16:9, ≥2400px wide). 
+- [ ] **Hero image** — `src/content/site.ts#hero.image` — confirm the photograph and alt text (`"Football match in progress..."`). Place the replacement in `assets-source/hero/uttrakhand-football-hero.png` (16:9, ≥2400px wide) and run `npm run optimize-images`.
 - [ ] **Eyebrow/headline/body/CTAs** — `hero.*` — confirm exact wording. The screenshot used "ONE STATE. / ONE PASSION. / ONE GAME." as a layout; treat as placeholder.
 - [ ] **Primary/secondary CTAs targets** — confirm destinations (currently `#achievements`, `#membership`).
 
@@ -32,7 +32,7 @@ For each slide (`src/content/site.ts#gallerySlides`, 4 items):
 - [ ] **Year / season** — verify dates/years.
 - [ ] **Title / achievement** — verify champions/runners-up/squad honours.
 - [ ] **Description** — replace with an accurate, concise description (no invented statistics).
-- [ ] **Images** — `public/assets/victories/championship-celebration-*.webp` (4:3 1600×1200). Provide correct alt text.
+- [ ] **Images** — `public/assets/victories/championship-celebration-*.webp` (3:2, up to 1600px wide). Provide correct alt text.
 - [ ] **Overall verification** — set `verified: true` per item once confirmed.
 
 ## 6) Match Centre + Official Notices (section 5F)
@@ -107,7 +107,7 @@ For each card (`src/content/site.ts#development.cards`, 3 items):
 
 ## 14) Assets / media
 
-- [ ] **Replace all placeholders** — overwrite files in `public/assets/` with client photos or approved logos (matching filenames/paths). See `public/assets/README.md`.
+- [ ] **Replace all placeholders** — add client photos or approved logos to `assets-source/`, run the optimiser, and update paths in `src/content/site.ts` if names change. See `public/assets/README.md`.
 - [ ] **Use optimiser** — drop originals into `assets-source/` (git-ignored) and run `npm run optimize-images` to produce WebP. 
 - [ ] **Alt text** — all informative images must have accurate, descriptive alt text in `src/content/site.ts`.
 - [ ] **Decorative images** — thumbnails marked with `alt=""` (e.g. leadership thumbnails) — confirm this is acceptable.

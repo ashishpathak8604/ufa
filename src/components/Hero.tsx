@@ -44,8 +44,11 @@ export function Hero() {
 
           <h1
             id="hero-heading"
-            className="display-heading fade-rise fade-rise-delay-1 mt-5  text-warmwhite [font-size:clamp(2.75rem,1.1rem+8vw,6.5rem)]"
+            className="display-heading fade-rise fade-rise-delay-1 mt-5 text-warmwhite [font-size:clamp(2.75rem,1.1rem+8vw,6.5rem)]"
           >
+            <span className="mb-4 block font-sans text-[0.72rem] font-semibold uppercase leading-none tracking-[0.22em] text-warmwhite/80 sm:text-sm">
+              {hero.eyebrow}
+            </span>
             {hero.headlineLines.map((line, index) => (
               <span
                 key={line}

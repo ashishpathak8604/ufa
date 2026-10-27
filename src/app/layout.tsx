@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Cormorant_Garamond, Inter } from "next/font/google";
+import { site } from "@/content/site";
+import { getSiteUrl, isIndexableSite } from "@/lib/site-url";
 import "./globals.css";
 
 const barlow = Barlow_Condensed({
@@ -27,48 +29,74 @@ const inter = Inter({
   preload: true,
 });
 
-/**
- * metadataBase resolves relative Open Graph URLs. Set NEXT_PUBLIC_SITE_URL
- * at deploy time (non-secret). The fallback is a neutral placeholder and
- * makes no factual claim about the association.
- */
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
-  ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
-  : new URL("https://example.com");
+const baseUrl = getSiteUrl();
+const indexable = isIndexableSite();
+
+const robots: Metadata["robots"] = indexable
+  ? {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    }
+  : { index: false, follow: false };
+
+const verification = {
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : {}),
+  ...(process.env.BING_SITE_VERIFICATION
+    ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } }
+    : {}),
+};
 
 export const metadata: Metadata = {
   metadataBase: baseUrl,
   title: {
-    default: "Uttarakhand Football Association",
-    template: "%s | Uttarakhand Football Association",
+    default: site.seo.title,
+    template: `%s | ${site.name}`,
   },
-  description:
-    "Public information site of the Uttarakhand Football Association — achievements, fixtures, official notices, and pathways into football in the state.",
-  applicationName: "Uttarakhand Football Association",
-  keywords: ["Uttarakhand", "football", "association", "UFA"],
-  robots: { index: true, follow: true },
+  description: site.seo.description,
+  applicationName: site.name,
+  authors: [{ name: site.name }],
+  creator: site.name,
+  publisher: site.name,
+  category: "Sports",
+  keywords: [...site.seo.keywords],
+  alternates: { canonical: "/" },
+  robots,
   openGraph: {
     type: "website",
     locale: "en_IN",
-    siteName: "Uttarakhand Football Association",
-    title: "Uttarakhand Football Association",
-    description:
-      "Achievements, fixtures, official notices, and pathways into football in Uttarakhand.",
+    url: "/",
+    siteName: site.name,
+    title: site.seo.title,
+    description: site.seo.description,
     images: [
       {
-        url: "/assets/placeholders/og-cover.webp",
-        width: 1200,
-        height: 630,
-        alt: "Uttarakhand Football Association placeholder social card",
+        url: site.seo.ogImage.src,
+        width: site.seo.ogImage.width,
+        height: site.seo.ogImage.height,
+        alt: site.seo.ogImage.alt,
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Uttarakhand Football Association",
-    description:
-      "Achievements, fixtures, official notices, and pathways into football in Uttarakhand.",
-    images: ["/assets/placeholders/og-cover.webp"],
+    title: site.seo.title,
+    description: site.seo.description,
+    images: [site.seo.ogImage.src],
+  },
+  ...(Object.keys(verification).length > 0 ? { verification } : {}),
+  other: {
+    "geo.region": "IN-UT",
+    "geo.placename": "Uttrakhand",
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
@@ -86,7 +114,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={`${barlow.variable} ${cormorant.variable} ${inter.variable}`}
     >
       <body>

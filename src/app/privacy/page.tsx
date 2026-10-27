@@ -3,6 +3,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  description: "Privacy policy for the Uttrakhand Football Association website.",
+  alternates: { canonical: "/privacy" },
+  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPage() {
@@ -12,7 +15,7 @@ export default function PrivacyPage() {
         Privacy Policy
       </h1>
       <p className="text-sm leading-relaxed text-muted-strong">
-        This is a placeholder privacy policy page for the Uttarakhand Football Association public
+        This is a placeholder privacy policy page for the Uttrakhand Football Association public
         landing site. Replace with the association’s approved policy before publication.
       </p>
       <p className="text-sm leading-relaxed text-muted-strong">

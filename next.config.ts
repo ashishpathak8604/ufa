@@ -25,6 +25,16 @@ const securityHeaders = [
   },
 ];
 
+const isPreviewDeployment =
+  process.env.VERCEL_ENV !== undefined
+    ? process.env.VERCEL_ENV !== "production"
+    : !process.env.NEXT_PUBLIC_SITE_URL ||
+      /localhost|127\.0\.0\.1|example\.com/i.test(process.env.NEXT_PUBLIC_SITE_URL);
+
+const headers = isPreviewDeployment
+  ? [...securityHeaders, { key: "X-Robots-Tag", value: "noindex, nofollow" }]
+  : securityHeaders;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
@@ -32,9 +42,10 @@ const nextConfig: NextConfig = {
   experimental: { serverActions: { bodySizeLimit: "5mb" } },
   images: {
     formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 2678400,
   },
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
+    return [{ source: "/(.*)", headers }];
   },
 };
 
