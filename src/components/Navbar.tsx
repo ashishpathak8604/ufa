@@ -143,7 +143,7 @@ export function Navbar() {
                 onClick={closeMenu}
                 className="btn btn-primary mt-1 w-full"
               >
-                Join UFA
+                Join USFA
               </a>
             </li>
           </ul>
